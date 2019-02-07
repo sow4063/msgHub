@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 const config = {
     channelSecret: 'bd318f73a1dc30b499140fd66502d1f1',
-    channelAccessToken: '7AC4byPJ0jxG/nz07+H9t559afmMuk48EgYcs8GMlzA5MM1j3LASF4VTw3ddcpzDu/2Xn5PK/Wo2BY5OkwkrV8rDrKvkr6QSIx/C0F0icObazq03Dnx9CwTsoEY2xpCvEv98fMMm23+EcHvL5zpsuAdB04t89/1O/w1cDnyilFU='
+    channelAccessToken: 'BUJPohDhLlJGGKLWH2qIFLZwZ2lzXePmVpOvXjvCTRR4ltmMmB59LFW6TruYBIbku/2Xn5PK/Wo2BY5OkwkrV8rDrKvkr6QSIx/C0F0icOZaa35V2i0fuLYyAFzQRln/Nnjdu82m8V7nYDGdoxwqNgdB04t89/1O/w1cDnyilFU='
 };
 
 const app = express();
