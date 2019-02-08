@@ -9,7 +9,7 @@ const app = express();
 
 const config = {
     channelSecret: 'bd318f73a1dc30b499140fd66502d1f1',
-    channelAccessToken: 'BUJPohDhLlJGGKLWH2qIFLZwZ2lzXePmVpOvXjvCTRR4ltmMmB59LFW6TruYBIbku/2Xn5PK/Wo2BY5OkwkrV8rDrKvkr6QSIx/C0F0icOZaa35V2i0fuLYyAFzQRln/Nnjdu82m8V7nYDGdoxwqNgdB04t89/1O/w1cDnyilFU='
+    channelAccessToken: 'at+fk6ySuxOJry9/Byrfx2iCp6zwX1eRCsJC8jv57Um4fN0PZB/2WhEWgeDACjitu/2Xn5PK/Wo2BY5OkwkrV8rDrKvkr6QSIx/C0F0icOb4Qi2NYZ8CqyuywVG2UJT7GWPnan8nqlqrjmMx1PELkAdB04t89/1O/w1cDnyilFU='
 };
 
 // configuration ===========================================
