@@ -2,7 +2,8 @@
 
 const express = require('express');
 const line = require('@line/bot-sdk');
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
+const host = process.env.HOST || 'www.fordicpro.io';
 const fs = require('fs');
 const https = require('https');
 const app = express();
