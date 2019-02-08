@@ -43,6 +43,8 @@ function handleEvent(event) {
 const server = https.createServer(options,app);
 
 //app.listen(PORT);
-server.listen(PORT);
 
-console.log(`Server running at ${PORT}`);
+https.createServer(options, app).listen( port, host, null, function() {
+//var server = app.listen(port, function(){ 
+  console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
+});

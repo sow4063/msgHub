@@ -24,7 +24,7 @@ app.use( bodyParser.urlencoded({ extended: true }) ); // parse application/x-www
 require('./app/router')(app); // pass our application into our routes
 
 // start app ===============================================
-//https.createServer(options, app).listen( port, host, null, function() {
-var server = app.listen(port, function(){	
+https.createServer(options, app).listen( port, host, null, function() {
+//var server = app.listen(port, function(){	
   console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
 });
