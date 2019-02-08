@@ -20,8 +20,6 @@ const options = {
    cert: fs.readFileSync(sslPath + 'fullchain.pem')
  };
 
-const server = https.createServer(options,app);
-
 app.post('/webhook', line.middleware(config), (req, res) => {
     console.log(req.body.events);
     Promise
@@ -41,6 +39,8 @@ function handleEvent(event) {
     text: event.message.text //実際に返信の言葉を入れる箇所
   });
 }
+
+const server = https.createServer(options,app);
 
 //app.listen(PORT);
 server.listen(PORT);
