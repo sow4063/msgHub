@@ -28,6 +28,11 @@ app.post('/webhook', line.middleware(config), (req, res) => {
       .then((result) => res.json(result));
 });
 
+app.get('/webhook', line.middleware(config), (req, res) => {
+    console.log(req.body.events);
+    return 200;
+});
+
 const client = new line.Client(config);
 
 function handleEvent(event) {
