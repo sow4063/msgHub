@@ -2,7 +2,7 @@
 
 const express = require('express');
 const line = require('@line/bot-sdk');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 443;
 const host = process.env.HOST || 'www.fordicpro.io';
 const fs = require('fs');
 const https = require('https');
@@ -28,11 +28,6 @@ app.post('/webhook', line.middleware(config), (req, res) => {
       .then((result) => res.json(result));
 });
 
-app.get('/webhook', line.middleware(config), (req, res) => {
-    console.log(req.body.events);
-    return 200;
-});
-
 const client = new line.Client(config);
 
 function handleEvent(event) {
@@ -46,11 +41,8 @@ function handleEvent(event) {
   });
 }
 
-const server = https.createServer(options,app);
-
 //app.listen(PORT);
 
 https.createServer(options, app).listen( port, host, null, function() {
-//var server = app.listen(port, function(){ 
-  console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
+  console.log('Server listening on host %s,  port %d in %s mode', this.address().host, this.address().port, app.settings.env );
 });
