@@ -46,20 +46,23 @@ app.post('/linemsg', (req, res) => {
     "recipient": {
       "id": '1172651839508093'
     },
-    "message": body.message
+    "message": body.message.text
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
+  // Send the HTTP request to the Messenger Platform
+  console.log('message LINEBOT To FB : ', request_body.message);
+
   request({
-    "uri": "https://www.fordicpro.io:4000/webhook",
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
     "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent to Facebook Messenger!');
+      console.log('SUCCESS!')
     } else {
-      console.error("Unable to send message:" + err);
+      console.error("Error - Unable to send message : " + err);
     }
   });
 
@@ -81,6 +84,7 @@ app.post('/fsmsg', (req, res) => {
 
   console.log('message sending From Facebook Messenger to LINE! : ' + message.text );
 
+  // to : jongik in LINE Messenger
   client.pushMessage('Ubc8bd3232c94987ce1f01e2043f246a5', message)
     .then(() => {
       console.log('SUCCESS');
@@ -88,12 +92,6 @@ app.post('/fsmsg', (req, res) => {
     .catch((err) => {
       console.error("Error : " + err );
     });
-
-  //return to LINE
-  // return client.replyMessage('', {
-  //   type: 'text',
-  //   text: body.response //実際に返信の言葉を入れる箇所
-  // });
 
 });
 
