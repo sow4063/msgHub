@@ -19,7 +19,6 @@ const config = {
     channelSecret: 'bd318f73a1dc30b499140fd66502d1f1',
     channelAccessToken: 'at+fk6ySuxOJry9/Byrfx2iCp6zwX1eRCsJC8jv57Um4fN0PZB/2WhEWgeDACjitu/2Xn5PK/Wo2BY5OkwkrV8rDrKvkr6QSIx/C0F0icOb4Qi2NYZ8CqyuywVG2UJT7GWPnan8nqlqrjmMx1PELkAdB04t89/1O/w1cDnyilFU='
 };
-const client = new line.Client(config);
 
 // configuration ===========================================
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
@@ -73,26 +72,24 @@ app.post('/fsmsg', (req, res) => {
 
   console.log('body from FacebookBOT : ', body);
 
-  // Construct the message body
-  let request_body = {
-    "recipient": {
-      "token": "877ee82541134ffcbdaec61648af12ce"
-    },
-    "message": body.response
-  }
-
-  // Send the HTTP request to the LINE Messenger Platform
-  request({
-    "uri": "https://www.fordicpro.io:443/webhook",
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent to LINE BOT!')
-    } else {
-      console.error("Unable to send message : " + err);
-    }
+  const client = new line.Client({
+    channelAccessToken: config.channelAccessToken //'<channel access token>'
   });
+
+  const message = {
+    type: 'text',
+    text: body.response
+  };
+
+  console.log('message sending From Facebook Messenger to LINE!');
+
+  client.pushMessage('sow4063-devops', message)
+    .then(() => {
+      console.log('SUCCESS');
+    })
+    .catch((err) => {
+      console.error("Error : " + err );
+    });
 
   //return to LINE
   // return client.replyMessage('', {
