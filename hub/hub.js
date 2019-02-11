@@ -23,17 +23,21 @@ https.createServer(options, app).listen( port, host, null, function() {
   console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
 });
 
-// Creates the endpoint for our webhook 
-app.post('/webhook', (req, res) => {  
+// Creates the endpoint for LINEBOT
+app.post('/linemsg', (req, res) => {  
  
   let body = req.body;
 
-  console.log(body);
+  console.log('body from LINEBOT : ', body);
 
 });
 
-// Adds support for GET requests to our webhook
-app.get('/webhook', (req, res) => {
-  console.log(req);
+// Creates the endpoint for FasebookBOT
+app.post('/fsmsg', (req, res) => {  
+ 
+  let body = req.body;
+
+  console.log('body from FacebookBOT : ', body);
+
 });
 

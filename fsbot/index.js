@@ -141,6 +141,19 @@ function callSendAPI(sender_psid, response) {
     } else {
       console.error("Unable to send message:" + err);
     }
+  });
+
+  // Send the HTTP request to the Messenger Platform
+  request({
+    "uri": "https:www.fordicpro.io:5000/fsmsg",
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent to hub server!')
+    } else {
+      console.error("Unable to send message:" + err);
+    }
   }); 
   
 }
