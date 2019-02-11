@@ -2,9 +2,9 @@
   "name": "mylinebot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "linebot.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node linebot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
