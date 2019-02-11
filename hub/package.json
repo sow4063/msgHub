@@ -15,6 +15,6 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "request": "^2.88.0",
-    "@line/bot-sdk": "^6.4.0",
+    "@line/bot-sdk": "^6.4.0"
   }
 }
