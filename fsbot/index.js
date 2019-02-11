@@ -6,7 +6,7 @@ const
   bodyParser = require('body-parser'),
   https = require('https'),
   port = process.env.PORT || 4000,
-  fs = require('fs');
+  fs = require('fs'),
   app = express().use(bodyParser.json()); // creates express http server
 
 // configuration ===========================================
