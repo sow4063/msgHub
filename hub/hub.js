@@ -59,12 +59,39 @@ app.post('/linemsg', (req, res) => {
 
 });
 
-// Creates the endpoint for FasebookBOT
+// Creates the endpoint for Fasebook BOT
 app.post('/fsmsg', (req, res) => {  
  
   let body = req.body;
 
   console.log('body from FacebookBOT : ', body);
+
+  // Construct the message body
+  let request_body = {
+    "recipient": {
+      "token": ""
+    },
+    "message": event.message.text
+  }
+
+  // Send the HTTP request to the LINE Messenger Platform
+  request({
+    "uri": "https://www.fordicpro.io:443/webhook",
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent to LINE BOT!')
+    } else {
+      console.error("Unable to send message : " + err);
+    }
+  });
+
+  // return to LINE
+  // return client.replyMessage(event.replyToken, {
+  //   type: 'text',
+  //   text: event.message.text //実際に返信の言葉を入れる箇所
+  // });
 
 });
 
