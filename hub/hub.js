@@ -72,18 +72,16 @@ app.post('/fsmsg', (req, res) => {
 
   console.log('body from FacebookBOT : ', body);
 
-  const client = new line.Client({
-    channelAccessToken: config.channelAccessToken //'<channel access token>'
-  });
+  const client = new line.Client(config);
 
   const message = {
     type: 'text',
     text: body.message.text
   };
 
-  console.log('message sending From Facebook Messenger to LINE! : ' + message );
+  console.log('message sending From Facebook Messenger to LINE! : ' + message.text );
 
-  client.pushMessage('<sow4063-devops>', message)
+  client.pushMessage('Ubc8bd3232c94987ce1f01e2043f246a5', message)
     .then(() => {
       console.log('SUCCESS');
     })
