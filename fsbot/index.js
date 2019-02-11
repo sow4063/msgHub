@@ -54,7 +54,7 @@ app.post('/webhook', (req, res) => {
 app.get('/webhook', (req, res) => {
 
   // Your verify token. Should be a random string.
-  let VERIFY_TOKEN = "46f8e72e8f0b9d9b60fca658aee4779d"
+  let VERIFY_TOKEN = "EAAEW3BK980wBAFnSP2oj8CJgcZB9Re9xMoc5Rd9YmjSSrZCw03GaikfQ9bj4gbZCtWCvsZB0HEtMfBAOcbZBKqzbF2IGWLt34HU8qvRBrT1hKCtAlnVwRdrFDJ171lJhiJZAIqc7TBm1xo3TIDEvbqMfqsqb8Ao8Rb6f3yKTZCMzELKqBLNoi7u"
     
   // Parse the query params
   let mode = req.query['hub.mode'];
