@@ -10,9 +10,11 @@ const
   request = require('request'),
   app = express().use(bodyParser.json()); // creates express http server
 
-// Imports dependencies and set up http server
+// For Facebook Messenger : Imports dependencies and set up http server
 const PAGE_ACCESS_TOKEN = "EAAEW3BK980wBAJqt80yIzcGMrjynNynA4OkZAaaXPSfEfZCf7rNbWpQuDX4rMbGfOxzpLzfwvyLAYwZBvlxdM9L0jhssZCBPN3CwkWYYS4zBguXWUlNLeyDcTZCl2MhiVqZC6FiG6vr6BQ2eZCY0THggbbr9HzZC7bQ4PEXBPNfR3GcFfZAoE3ZCNu";
 
+// For LINE
+const line = require('@line/bot-sdk');
 
 // configuration ===========================================
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
@@ -75,23 +77,23 @@ app.post('/fsmsg', (req, res) => {
   }
 
   // Send the HTTP request to the LINE Messenger Platform
-  request({
-    "uri": "https://www.fordicpro.io:443/webhook",
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('message sent to LINE BOT!')
-    } else {
-      console.error("Unable to send message : " + err);
-    }
-  });
-
-  // return to LINE
-  // return client.replyMessage(event.replyToken, {
-  //   type: 'text',
-  //   text: event.message.text //実際に返信の言葉を入れる箇所
+  // request({
+  //   "uri": "https://www.fordicpro.io:443/webhook",
+  //   "method": "POST",
+  //   "json": request_body
+  // }, (err, res, body) => {
+  //   if (!err) {
+  //     console.log('message sent to LINE BOT!')
+  //   } else {
+  //     console.error("Unable to send message : " + err);
+  //   }
   // });
+
+  //return to LINE
+  return client.replyMessage('', {
+    type: 'text',
+    text: body.response //実際に返信の言葉を入れる箇所
+  });
 
 });
 
