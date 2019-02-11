@@ -78,12 +78,12 @@ app.post('/fsmsg', (req, res) => {
 
   const message = {
     type: 'text',
-    text: 'hello line'
+    text: body.message.text
   };
 
   console.log('message sending From Facebook Messenger to LINE!');
 
-  client.pushMessage('sow4063-devops', message)
+  client.pushMessage('jongik', message)
     .then(() => {
       console.log('SUCCESS');
     })
