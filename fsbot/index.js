@@ -7,6 +7,7 @@ const
   https = require('https'),
   port = process.env.PORT || 4000,
   fs = require('fs'),
+  host = process.env.HOST || 'www.fordicpro.io',
   app = express().use(bodyParser.json()); // creates express http server
 
 // configuration ===========================================
