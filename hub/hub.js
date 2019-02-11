@@ -76,29 +76,29 @@ app.post('/fsmsg', (req, res) => {
   // Construct the message body
   let request_body = {
     "recipient": {
-      "token": ""
+      "token": "877ee82541134ffcbdaec61648af12ce"
     },
     "message": body.response
   }
 
   // Send the HTTP request to the LINE Messenger Platform
-  // request({
-  //   "uri": "https://www.fordicpro.io:443/webhook",
-  //   "method": "POST",
-  //   "json": request_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('message sent to LINE BOT!')
-  //   } else {
-  //     console.error("Unable to send message : " + err);
-  //   }
-  // });
+  request({
+    "uri": "https://www.fordicpro.io:443/webhook",
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent to LINE BOT!')
+    } else {
+      console.error("Unable to send message : " + err);
+    }
+  });
 
   //return to LINE
-  return client.replyMessage('', {
-    type: 'text',
-    text: body.response //実際に返信の言葉を入れる箇所
-  });
+  // return client.replyMessage('', {
+  //   type: 'text',
+  //   text: body.response //実際に返信の言葉を入れる箇所
+  // });
 
 });
 
