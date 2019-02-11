@@ -78,7 +78,7 @@ app.post('/fsmsg', (req, res) => {
 
   const message = {
     type: 'text',
-    text: body.response
+    text: 'hello line'
   };
 
   console.log('message sending From Facebook Messenger to LINE!');
