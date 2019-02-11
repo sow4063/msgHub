@@ -71,7 +71,7 @@ app.post('/fsmsg', (req, res) => {
     "recipient": {
       "token": ""
     },
-    "message": event.message.text
+    "message": body.response
   }
 
   // Send the HTTP request to the LINE Messenger Platform
