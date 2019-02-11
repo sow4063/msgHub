@@ -46,7 +46,7 @@ app.post('/linemsg', (req, res) => {
     "recipient": {
       "id": '1172651839508093'
     },
-    "message": body.message.text
+    "message": body.message
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
