@@ -45,13 +45,13 @@ app.post('/linemsg', (req, res) => {
   
   // Send the HTTP request to the Facebook Messenger Platform
   request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "uri": "https://www.fordicpro.io:4000/webhook",
     "qs": { "access_token": PAGE_ACCESS_TOKEN },
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent!')
+      console.log('message sent to Facebook Messenger!');
     } else {
       console.error("Unable to send message:" + err);
     }
