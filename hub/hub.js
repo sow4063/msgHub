@@ -76,12 +76,7 @@ app.post('/linemsg', (req, res) => {
   
   const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
  
-  try {
-    const response = await messenger.sendTextMessage({id: '987006184735973', text: 'Hello'});
-    console.log(response);
-  } catch (e) {
-    console.error(e);
-  }
+  messenger.sendTextMessage({id: '987006184735973', text: 'Hello'});
 
 });
 
