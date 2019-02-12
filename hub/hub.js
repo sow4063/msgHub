@@ -44,7 +44,8 @@ app.post('/linemsg', (req, res) => {
   // Construct the message body
   let request_body = {
     "recipient": {
-      "id": '987006184735973'
+      //"id": '987006184735973' 
+      "id": '1172651839508093'
     },
     "message": body.message
   }
@@ -60,7 +61,7 @@ app.post('/linemsg', (req, res) => {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('SUCCESS!')
+      console.log('SUCCESS! : ', res, body);
     } else {
       console.error("Error - Unable to send message : " + err);
     }
