@@ -47,25 +47,25 @@ app.post('/linemsg', (req, res) => {
       //"id": '987006184735973' 
       "id": '1172651839508093'
     },
-    "message": body.message
+    "message": 'hello FB!!!'
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
   // Send the HTTP request to the Messenger Platform
   console.log('message LINE To FB : ', request_body.message);
 
-  // request({
-  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
-  //   "method": "POST",
-  //   "json": request_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('SUCCESS! : ', res, body.message);
-  //   } else {
-  //     console.error("Error - Unable to send message : " + err);
-  //   }
-  // });
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('SUCCESS! : ', res, body.message);
+    } else {
+      console.error("Error - Unable to send message : " + err);
+    }
+  });
 
 });
 
