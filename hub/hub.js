@@ -45,9 +45,10 @@ app.post('/linemsg', (req, res) => {
   let request_body = {
     "recipient": {
       //"id": '987006184735973' 
-      "id": '1172651839508093'
+      //"id": '1172651839508093'
+      "id": '08041474196'
     },
-    "message": 'hello FB!!!'
+    "message": body.message
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
@@ -61,7 +62,7 @@ app.post('/linemsg', (req, res) => {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('SUCCESS! : ', res, body.message);
+      console.log('SUCCESS! : ', body.message);
     } else {
       console.error("Error - Unable to send message : " + err);
     }
