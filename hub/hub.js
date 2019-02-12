@@ -40,15 +40,19 @@ app.post('/linemsg', (req, res) => {
 
   console.log('body from LINEBOT : ', body);
 
+  let response = {
+    "text": `hub server sent the line message: "${body.message}".`
+  }
+
   // send to the fsbot
   // Construct the message body
   let request_body = {
     "recipient": {
-      //"id": '987006184735973' 
+      "id": '987006184735973'
       //"id": '1172651839508093'
-      "id": '08041474196'
+      //"id": '08041474196'
     },
-    "message": body.message
+    "message": response
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
