@@ -51,7 +51,7 @@ app.post('/linemsg', (req, res) => {
   
   // Send the HTTP request to the Facebook Messenger Platform
   // Send the HTTP request to the Messenger Platform
-  console.log('message LINEBOT To FB : ', request_body.message);
+  console.log('message LINE To FB : ', request_body.message);
 
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",
