@@ -61,7 +61,7 @@ app.post('/linemsg', (req, res) => {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('SUCCESS! : ', res, body);
+      console.log('SUCCESS! : ', res, body.message);
     } else {
       console.error("Error - Unable to send message : " + err);
     }
