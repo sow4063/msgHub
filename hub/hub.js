@@ -54,18 +54,18 @@ app.post('/linemsg', (req, res) => {
   // Send the HTTP request to the Messenger Platform
   console.log('message LINE To FB : ', request_body.message);
 
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('SUCCESS! : ', res, body.message);
-    } else {
-      console.error("Error - Unable to send message : " + err);
-    }
-  });
+  // request({
+  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
+  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
+  //   "method": "POST",
+  //   "json": request_body
+  // }, (err, res, body) => {
+  //   if (!err) {
+  //     console.log('SUCCESS! : ', res, body.message);
+  //   } else {
+  //     console.error("Error - Unable to send message : " + err);
+  //   }
+  // });
 
 });
 
