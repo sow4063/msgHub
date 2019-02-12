@@ -12,6 +12,7 @@ const
 
 // For Facebook Messenger : Imports dependencies and set up http server
 const PAGE_ACCESS_TOKEN = "EAAEW3BK980wBAJqt80yIzcGMrjynNynA4OkZAaaXPSfEfZCf7rNbWpQuDX4rMbGfOxzpLzfwvyLAYwZBvlxdM9L0jhssZCBPN3CwkWYYS4zBguXWUlNLeyDcTZCl2MhiVqZC6FiG6vr6BQ2eZCY0THggbbr9HzZC7bQ4PEXBPNfR3GcFfZAoE3ZCNu";
+const FBMessenger = require('fb-messenger');
 
 // For LINE
 const line = require('@line/bot-sdk');
@@ -59,18 +60,28 @@ app.post('/linemsg', (req, res) => {
   // Send the HTTP request to the Messenger Platform
   console.log('message LINE To FB : ', request_body.message);
 
-  request({
-    "uri": "https://graph.facebook.com/v2.6/me/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "method": "POST",
-    "json": request_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('SUCCESS!');
-    } else {
-      console.error("Error - Unable to send message : " + err);
-    }
-  });
+  // request({
+  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
+  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
+  //   "method": "POST",
+  //   "json": request_body
+  // }, (err, res, body) => {
+  //   if (!err) {
+  //     console.log('SUCCESS!');
+  //   } else {
+  //     console.error("Error - Unable to send message : " + err);
+  //   }
+  // });
+
+  
+  const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
+ 
+  try {
+    const response = await messenger.sendTextMessage({id: '987006184735973', text: 'Hello'});
+    console.log(response);
+  } catch (e) {
+    console.error(e);
+  }
 
 });
 

@@ -12,9 +12,10 @@
   "author": "sow4063",
   "license": "ISC",
   "dependencies": {
+    "@line/bot-sdk": "^6.4.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "request": "^2.88.0",
-    "@line/bot-sdk": "^6.4.0"
+    "fb-messenger": "^2.3.1",
+    "request": "^2.88.0"
   }
 }
