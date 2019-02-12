@@ -41,7 +41,7 @@ app.post('/linemsg', (req, res) => {
   console.log('body from LINEBOT : ', body);
 
   let response = {
-    "text": `hub server sent the line message: "${body.message}".`
+    "text": body.message
   }
 
   // send to the fsbot
@@ -66,7 +66,7 @@ app.post('/linemsg', (req, res) => {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('SUCCESS! : ', body.message);
+      console.log('SUCCESS!');
     } else {
       console.error("Error - Unable to send message : " + err);
     }
