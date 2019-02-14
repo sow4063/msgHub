@@ -49,34 +49,36 @@ app.post('/linemsg', (req, res) => {
   // Construct the message body
   let request_body = {
     "recipient": {
-      "id": '987006184735973'
-      //"id": '1172651839508093'
-      //"id": '08041474196'
+      "id": "1172651839508093"
     },
-    "message": response
+    "message": {
+      "text": "test send msg"
+    },
+    "messaging_type": "MESSAGE_TAG",
+    "tag": "firsts greet",
+    "notification_type": "REGULAR"
   }
   
   // Send the HTTP request to the Facebook Messenger Platform
   // Send the HTTP request to the Messenger Platform
   console.log('message LINE To FB : ', request_body.message);
 
-  // request({
-  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
-  //   "method": "POST",
-  //   "json": request_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('SUCCESS!');
-  //   } else {
-  //     console.error("Error - Unable to send message : " + err);
-  //   }
-  // });
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('SUCCESS!');
+    } else {
+      console.error("Error - Unable to send message : " + err);
+    }
+  });
 
   
-  const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
- 
-  messenger.sendTextMessage({id: '1172651839508093', text: 'Hello'});
+  //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
+  //messenger.sendTextMessage({id: '1172651839508093', text: 'Hello'});
 
 });
 
