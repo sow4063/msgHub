@@ -53,57 +53,29 @@ app.post('/linemsg', (req, res) => {
     },
     "message": {
       "text": body.message
-    },
-    "messaging_type": "MESSAGE_TAG",
-    "tag": "firsts greet from mhub",
-    "notification_type": "REGULAR"
+    }
   }
 
   console.log('message LINE To FB : ', request_body.message);
   
   // Send the HTTP request to the Facebook Messenger Platform
-  // from LINE 
-  const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
-  messenger.sendTextMessage({id: '1172651839508093', text: body.message});
+  //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
+  //messenger.sendTextMessage({id: '1172651839508093', text: body.message});
   
-  // return request({
-  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
-  //   "method": "POST",
-  //   "json": request_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('SUCCESS!');
-  //   } else {
-  //     console.error("Error - Unable to send message : " + err);
-  //   }
-  // });
-
-  // let url = "https://graph.facebook.com/v2.6/me/messages?access_token="
-  // url += PAGE_ACCESS_TOKEN;
-
-  // let send_body = {
-  //   "recipient":{
-  //     "id": "1172651839508093"
-  //   },
-  //   //"messaging_type": "MESSAGE_TAG",
-  //   //"tag": "TRANSPORTATION_UPDATE",
-  //   "notification_type": "REGULAR"
-  //   "message": {
-  //     "text": body.message
-  // }
-
-  // request({
-  //   "uri": url,
-  //   "method": "POST",
-  //   "body": send_body
-  // }, (err, res, body) => {
-  //   if (!err) {
-  //     console.log('SUCCESS!');
-  //   } else {
-  //     console.error("Error - Unable to send message : " + err);
-  //   }
-  // });
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!');
+      // Returns a '200 OK' response to all requests
+      res.status(200).send('EVENT_RECEIVED');
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
 
 });
 
