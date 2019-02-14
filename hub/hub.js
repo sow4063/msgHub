@@ -97,18 +97,21 @@ app.post('/linemsg', (req, res) => {
   let url = "https://graph.facebook.com/v2.6/me/messages?access_token="
   url += PAGE_ACCESS_TOKEN;
 
-  let send = {
+  let send_body = {
     "recipient":{
       "id": "1172651839508093"
     },
-    "message":{
+    //"messaging_type": "MESSAGE_TAG",
+    //"tag": "TRANSPORTATION_UPDATE",
+    "notification_type": "REGULAR"
+    "message": {
       "text": body.message
   }
 
   request({
     "uri": url,
     "method": "POST",
-    body: send
+    "body": send_body
   }, (err, res, body) => {
     if (!err) {
       console.log('SUCCESS!');
