@@ -39,7 +39,7 @@ app.post('/linemsg', (req, res) => {
  
   let body = req.body;
 
-  console.log('body from LINEBOT : ', body);
+  console.log('body from LINEBOT : ', body );
 
   let response = {
     "text": body.message
@@ -52,40 +52,51 @@ app.post('/linemsg', (req, res) => {
       "id": "1172651839508093"
     },
     "message": {
-      "text": "test send msg"
+      "text": body.message
     },
     "messaging_type": "MESSAGE_TAG",
-    "tag": "firsts greet",
+    "tag": "firsts greet from mhub",
     "notification_type": "REGULAR"
-  }
-
-  //ヘッダーを定義
-  var headers = {
-    'Content-Type':'application/json'
-  }
-
-  //オプションを定義
-  var options = {
-    url: 'https://graph.facebook.com/v2.6/me/messages',
-    method: 'POST',
-    headers: headers,
-    json: true,
-    body: request_body
   }
 
   console.log('message LINE To FB : ', request_body.message);
   
   // Send the HTTP request to the Facebook Messenger Platform
-  // Send the HTTP request to the Messenger Platform
-
+  // from LINE 
   //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
   //messenger.sendTextMessage({id: '1172651839508093', text: 'Hello'});
   
+  return request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('SUCCESS!');
+    } else {
+      console.error("Error - Unable to send message : " + err);
+    }
+  }).json();
+
+  // let url = "https://graph.facebook.com/v2.6/me/messages?access_token="
+  // url += PAGE_ACCESS_TOKEN;
+
+  // let send_body = {
+  //   "recipient":{
+  //     "id": "1172651839508093"
+  //   },
+  //   //"messaging_type": "MESSAGE_TAG",
+  //   //"tag": "TRANSPORTATION_UPDATE",
+  //   "notification_type": "REGULAR"
+  //   "message": {
+  //     "text": body.message
+  // }
+
   // request({
-  //   "uri": "https://graph.facebook.com/v2.6/me/messages",
-  //   "qs": { "access_token": PAGE_ACCESS_TOKEN },
+  //   "uri": url,
   //   "method": "POST",
-  //   "json": request_body
+  //   "body": send_body
   // }, (err, res, body) => {
   //   if (!err) {
   //     console.log('SUCCESS!');
@@ -93,32 +104,6 @@ app.post('/linemsg', (req, res) => {
   //     console.error("Error - Unable to send message : " + err);
   //   }
   // });
-
-  let url = "https://graph.facebook.com/v2.6/me/messages?access_token="
-  url += PAGE_ACCESS_TOKEN;
-
-  let send_body = {
-    "recipient":{
-      "id": "1172651839508093"
-    },
-    //"messaging_type": "MESSAGE_TAG",
-    //"tag": "TRANSPORTATION_UPDATE",
-    "notification_type": "REGULAR"
-    "message": {
-      "text": body.message
-  }
-
-  request({
-    "uri": url,
-    "method": "POST",
-    "body": send_body
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('SUCCESS!');
-    } else {
-      console.error("Error - Unable to send message : " + err);
-    }
-  });
 
 });
 
