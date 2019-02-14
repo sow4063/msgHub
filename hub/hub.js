@@ -70,7 +70,7 @@ app.post('/linemsg', (req, res) => {
     method: 'POST',
     headers: headers,
     json: true,
-    body: JSON.stringify(request_body)
+    body: request_body
   }
 
   console.log('message LINE To FB : ', request_body.message);
