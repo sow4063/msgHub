@@ -71,7 +71,7 @@ app.post('/linemsg', (req, res) => {
     if (!err) {
       console.log('message sent!');
       // Returns a '200 OK' response to all requests
-      res.status(200).send('EVENT_RECEIVED');
+      return res.statusCode;
     } else {
       console.error("Unable to send message:" + err);
     }
