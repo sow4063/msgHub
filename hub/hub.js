@@ -74,20 +74,12 @@ app.post('/linemsg', (req, res) => {
   }
 
   console.log('message LINE To FB : ', request_body.message);
-
-  //リクエスト送信
-  request( options, function (error, response, body) {
-    //コールバックで色々な処理
-  }, (err, res, body) => {
-    if (!err) {
-      console.log('SUCCESS!');
-    } else {
-      console.error("Error - Unable to send message : " + err);
-    }
-  });
   
   // Send the HTTP request to the Facebook Messenger Platform
   // Send the HTTP request to the Messenger Platform
+
+  //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
+  //messenger.sendTextMessage({id: '1172651839508093', text: 'Hello'});
   
   // request({
   //   "uri": "https://graph.facebook.com/v2.6/me/messages",
@@ -101,9 +93,29 @@ app.post('/linemsg', (req, res) => {
   //     console.error("Error - Unable to send message : " + err);
   //   }
   // });
-  
-  //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
-  //messenger.sendTextMessage({id: '1172651839508093', text: 'Hello'});
+
+  let url = "https://graph.facebook.com/v2.6/me/messages?access_token="
+  url += PAGE_ACCESS_TOKEN;
+
+  let send = {
+    "recipient":{
+      "id": "1172651839508093"
+    },
+    "message":{
+      "text": body.message
+  }
+
+  request({
+    "uri": url,
+    "method": "POST",
+    body: send
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('SUCCESS!');
+    } else {
+      console.error("Error - Unable to send message : " + err);
+    }
+  });
 
 });
 
