@@ -32,7 +32,8 @@ dotenv.config({ path: ENV_FILE });
 const server = restify.createServer();
 //const server = restify.createServer(options);
 
-server.listen(port, host, () => {
+//server.listen(port, host, () => {
+server.listen(port () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
     console.log(`\nTo test your bot, see: https://aka.ms/debug-with-emulator`);
