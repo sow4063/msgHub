@@ -10,7 +10,9 @@ const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
 const options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
-   cert: fs.readFileSync(sslPath + 'fullchain.pem')
+   cert: fs.readFileSync(sslPath + 'fullchain.pem'),
+   url: 'www.fordicpro.io',
+   name: 'skypebot'
  };
 
 // Import required bot services.
@@ -27,8 +29,6 @@ dotenv.config({ path: ENV_FILE });
 // Create HTTP server
 //const server = restify.createServer();
 const server = restify.createServer(options);
-server.name = 'skypebot';
-server.url = 'www.fordicpro.io';
 
 server.listen(process.env.port || process.env.PORT || 3978, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
