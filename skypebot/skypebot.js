@@ -12,7 +12,7 @@ const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
 const options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
-   certificate: fs.readFileSync(sslPath + 'fullchain.pem'),
+   cert: fs.readFileSync(sslPath + 'fullchain.pem'),
    url: 'www.fordicpro.io',
    name: 'skypebot'
  };
