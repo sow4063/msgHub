@@ -29,8 +29,8 @@ const ENV_FILE = path.join(__dirname, '.env');
 dotenv.config({ path: ENV_FILE });
 
 // Create HTTP server
-//const server = restify.createServer(port);
-const server = restify.createServer(options);
+const server = restify.createServer();
+//const server = restify.createServer(options);
 
 server.listen(port, host, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
