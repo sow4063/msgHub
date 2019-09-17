@@ -11,8 +11,10 @@ const port = process.env.port || process.env.PORT || 3978;
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
 const options = {  
-   key: fs.readFileSync(sslPath + 'privkey.pem'),
-   cert: fs.readFileSync(sslPath + 'fullchain.pem'),
+   https_options: {
+     key: fs.readFileSync(sslPath + 'privkey.pem'),
+     cert: fs.readFileSync(sslPath + 'fullchain.pem'),
+   },
    url: 'www.fordicpro.io',
    name: 'skypebot'
  };
