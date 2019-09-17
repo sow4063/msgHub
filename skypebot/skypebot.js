@@ -4,6 +4,7 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
+const fs = require('fs'),
 
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 

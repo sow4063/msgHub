@@ -4,10 +4,10 @@
     "description": "A bot that demonstrates core AI capabilities",
     "author": "Generated using Microsoft Bot Builder Yeoman generator v4.5.0",
     "license": "MIT",
-    "main": "index.js",
+    "main": "skypebot.js",
     "scripts": {
-        "start": "node ./index.js",
-        "watch": "nodemon ./index.js",
+        "start": "node ./skypebot.js",
+        "watch": "nodemon ./skypebot.js",
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
