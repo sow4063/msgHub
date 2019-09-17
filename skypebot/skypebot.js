@@ -10,7 +10,7 @@ const port = process.env.port || process.env.PORT || 3978;
 
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
-const options = {  
+const https_options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
    cert: fs.readFileSync(sslPath + 'fullchain.pem'),
    url: 'www.fordicpro.io',
@@ -29,8 +29,8 @@ const ENV_FILE = path.join(__dirname, '.env');
 dotenv.config({ path: ENV_FILE });
 
 // Create HTTP server
-const server = restify.createServer(port);
-const httpsserver = restify.createServer(options);
+//const server = restify.createServer(port);
+const server = restify.createServer(https_options);
 
 httpsserver.listen(port, host, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
