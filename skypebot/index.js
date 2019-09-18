@@ -33,12 +33,6 @@ dotenv.config({ path: ENV_FILE });
 const server = restify.createServer();
 const https_server = restify.createServer(https_options);
 
-server.listen(port, () => {
-    console.log(`\n${ server.name } listening to ${ server.url }`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
-    console.log(`\nTo test your bot, see: https://aka.ms/debug-with-emulator`);
-});
-
 https_server.listen(https_port,host, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
@@ -64,7 +58,7 @@ adapter.onTurnError = async (context, error) => {
 const myBot = new MyBot();
 
 // Listen for incoming requests.
-server.post('/api/messages', (req, res) => {
+https_server.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await myBot.run(context);
