@@ -1,13 +1,13 @@
 {
     "name": "skypebot",
     "version": "1.0.0",
-    "description": "A bot that demonstrates core AI capabilities",
+    "description": "A bot that demonstrates echo skype chatbot",
     "author": "Generated using Microsoft Bot Builder Yeoman generator v4.5.0",
     "license": "MIT",
-    "main": "skypebot.js",
+    "main": "index.js",
     "scripts": {
-        "start": "node ./skypebot.js",
-        "watch": "nodemon ./skypebot.js",
+        "start": "node ./index.js",
+        "watch": "nodemon ./index.js",
         "lint": "eslint .",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

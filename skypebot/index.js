@@ -4,17 +4,17 @@
 const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
+
+const port = process.env.PORT || 4000;
 const fs = require('fs');
 const host = process.env.HOST || 'www.fordicpro.io';
-const port = process.env.port || process.env.PORT || 3978;
 
+// configuration ===========================================
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
 const options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
-   cert: fs.readFileSync(sslPath + 'fullchain.pem'),
-   url: 'www.fordicpro.io',
-   name: 'skypebot'
+   cert: fs.readFileSync(sslPath + 'fullchain.pem')
  };
 
 // Import required bot services.
@@ -29,11 +29,9 @@ const ENV_FILE = path.join(__dirname, '.env');
 dotenv.config({ path: ENV_FILE });
 
 // Create HTTP server
-const server = restify.createServer();
-//const server = restify.createServer(options);
-
-//server.listen(port, host, () => {
-server.listen(port, () => {
+//const server = restify.createServer();
+const server = restify.createServer(options);
+server.listen(port,host, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
     console.log(`\nTo test your bot, see: https://aka.ms/debug-with-emulator`);
@@ -43,7 +41,7 @@ server.listen(port, () => {
 // See https://aka.ms/about-bot-adapter to learn more about how bots work.
 const adapter = new BotFrameworkAdapter({
     appId: process.env.MicrosoftAppId || '39b991d8-6b43-4086-8aca-329775f433f3',
-    appPassword: process.env.MicrosoftAppPassword || 'zDD//*KWwEQ:62k4l1cpq:wR1ZZyM@?m'
+    appPassword: process.env.MicrosoftAppPassword || 'o-z4p/qSW@3A+P8RiZf0T]wS[Qr4.zMW'
 });
 
 // Catch-all for errors.
