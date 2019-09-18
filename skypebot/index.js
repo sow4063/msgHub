@@ -5,18 +5,30 @@ const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
 
-const https_port = process.env.PORT || 3978;
-const port = process.env.PORT || 3979;
+//const https_port = process.env.PORT || 3978;
+const port = process.env.PORT || 3978;
 const fs = require('fs');
 const host = process.env.HOST || 'www.fordicpro.io';
+
+const
+  express = require('express'),
+  bodyParser = require('body-parser'),
+  https = require('https'),
+  request = require('request'),
+  app = express().use(bodyParser.json()); // creates express http server
+
 
 // configuration ===========================================
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
-const https_options = {  
+const options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
    cert: fs.readFileSync(sslPath + 'fullchain.pem')
  };
+
+ https.createServer(options, app).listen( port, host, null, function() {
+  console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
+});
 
 // Import required bot services.
 // See https://aka.ms/bot-services to learn more about the different parts of a bot.
@@ -30,14 +42,12 @@ const ENV_FILE = path.join(__dirname, '.env');
 dotenv.config({ path: ENV_FILE });
 
 // Create HTTP server
-const server = restify.createServer();
-const https_server = restify.createServer(https_options);
-
-https_server.listen(https_port,host, () => {
-    console.log(`\n${ server.name } listening to ${ server.url }`);
-    console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
-    console.log(`\nTo test your bot, see: https://aka.ms/debug-with-emulator`);
-});
+// const server = restify.createServer();
+// server.listen(port,host, () => {
+//     console.log(`\n${ server.name } listening to ${ server.url }`);
+//     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
+//     console.log(`\nTo test your bot, see: https://aka.ms/debug-with-emulator`);
+// });
 
 // Create adapter.
 // See https://aka.ms/about-bot-adapter to learn more about how bots work.
@@ -58,7 +68,8 @@ adapter.onTurnError = async (context, error) => {
 const myBot = new MyBot();
 
 // Listen for incoming requests.
-https_server.post('/api/messages', (req, res) => {
+//https_server.post('/api/messages', (req, res) => {
+app.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await myBot.run(context);
