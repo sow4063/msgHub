@@ -5,14 +5,14 @@ const dotenv = require('dotenv');
 const path = require('path');
 const restify = require('restify');
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3978;
 const fs = require('fs');
 const host = process.env.HOST || 'www.fordicpro.io';
 
 // configuration ===========================================
 const sslPath = '/etc/letsencrypt/live/www.fordicpro.io/';
 
-const options = {  
+const https_options = {  
    key: fs.readFileSync(sslPath + 'privkey.pem'),
    cert: fs.readFileSync(sslPath + 'fullchain.pem')
  };
@@ -30,7 +30,7 @@ dotenv.config({ path: ENV_FILE });
 
 // Create HTTP server
 //const server = restify.createServer();
-const server = restify.createServer(options);
+const server = restify.createServer(https_options);
 server.listen(port,host, () => {
     console.log(`\n${ server.name } listening to ${ server.url }`);
     console.log(`\nGet Bot Framework Emulator: https://aka.ms/botframework-emulator`);
