@@ -34,6 +34,65 @@ https.createServer(options, app).listen( port, host, null, function() {
   console.log('Server listening on port %d in %s mode', this.address().port, app.settings.env );
 });
 
+// Creates the endpoint for SKYPEBOT
+app.post('/skypemsg', (req, res) => {  
+  let body = req.body;
+
+  console.log('body from SKYPEBOT : ', body );
+
+  let response = {
+    "text": body.message
+  }
+
+  // send to the skypebot
+  // Construct the message body
+  let request_body = {
+    "recipient": {
+      "id": "1172651839508093"
+    },
+    "message": {
+      "text": body.message
+    }
+  }
+
+  console.log('message sending from SKYPE To FB : ', request_body.message);
+  
+  request({
+    "uri": "https://graph.facebook.com/v2.6/me/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!');
+      return res.statusCode;
+    } 
+    else {
+      console.error("Unable to send message:" + err);
+    }
+  });
+
+  // to : jongik in LINE Messenger
+  const client = new line.Client(config);
+
+  const message = {
+    type: 'text',
+    text: body.message
+  };
+
+  console.log('message sending From SKYPEBOT to LINE! : ' + message.text );
+
+  // to : jongik in LINE Messenger
+  client.pushMessage('Ubc8bd3232c94987ce1f01e2043f246a5', message)
+    .then(() => {
+      console.log('SUCCESS');
+    })
+    .catch((err) => {
+      console.error("Error : " + err );
+    });
+
+});
+
 // Creates the endpoint for LINEBOT
 app.post('/linemsg', (req, res) => {  
  
@@ -57,10 +116,6 @@ app.post('/linemsg', (req, res) => {
   }
 
   console.log('message LINE To FB : ', request_body.message);
-  
-  // Send the HTTP request to the Facebook Messenger Platform
-  //const messenger = new FBMessenger({token: PAGE_ACCESS_TOKEN});
-  //messenger.sendTextMessage({id: '1172651839508093', text: body.message});
   
   request({
     "uri": "https://graph.facebook.com/v2.6/me/messages",

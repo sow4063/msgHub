@@ -73,5 +73,28 @@ app.post('/api/messages', (req, res) => {
     adapter.processActivity(req, res, async (context) => {
         // Route to main dialog.
         await myBot.run(context);
+
+        // request to hub server.
+        // Construct the message body
+        let request_body = {
+          "recipient": {
+            "id": context.activity.recipient.id
+          },
+          "message": context.activity.text
+        }
+
+        // Send the HTTP request to the Messenger Platform
+        request({
+          "uri": "https://www.fordicpro.io:5000/skypemsg",
+          "method": "POST",
+          "json": request_body
+        }, (err, res, body) => {
+          if (!err) {
+            console.log('message sent!')
+          } 
+          else {
+            console.error("Unable to send message:" + err);
+          }
+        });
     });
 });
