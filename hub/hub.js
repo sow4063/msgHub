@@ -169,8 +169,6 @@ app.post('/fsmsg', (req, res) => {
 
   request({
     "uri": "https://www.fordicpro.io:3978/api/messages",
-    "qs": { "access_token": PAGE_ACCESS_TOKEN },
-    "id",
     "method": "POST",
     "json": request_body
   }, (err, res, body) => {
