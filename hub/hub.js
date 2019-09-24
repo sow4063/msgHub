@@ -164,7 +164,7 @@ app.post('/fsmsg', (req, res) => {
     "recipient": {
       "id": "28:39b991d8-6b43-4086-8aca-329775f433f3"
     },
-    "text": body.messgae.text
+    "text": body.message.text
   }
 
   request({
