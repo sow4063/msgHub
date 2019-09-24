@@ -164,8 +164,11 @@ app.post('/fsmsg', (req, res) => {
     "recipient": {
       "id": "28:39b991d8-6b43-4086-8aca-329775f433f3"
     },
-    "text": body.message.text
+    "text": body.message.text,
+    type: 'text'
   }
+
+  console.log('message sending From Facebook Messenger to Skypebot! : ' + message.text );
 
   request({
     "uri": "https://www.fordicpro.io:3978/api/messages",
@@ -173,7 +176,7 @@ app.post('/fsmsg', (req, res) => {
     "json": request_body
   }, (err, res, body) => {
     if (!err) {
-      console.log('message sent!');
+      console.log('message sending From Facebook Messenger to Skypebot!');
       // Returns a '200 OK' response to all requests
       return res.statusCode;
     } else {
