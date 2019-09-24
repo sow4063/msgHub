@@ -159,5 +159,29 @@ app.post('/fsmsg', (req, res) => {
       console.error("Error : " + err );
     });
 
+  // to : Skype Messenger
+  let request_body = {
+    "recipient": {
+      "id": "28:39b991d8-6b43-4086-8aca-329775f433f3"
+    },
+    "text": body.messgae.text
+  }
+
+  request({
+    "uri": "https://www.fordicpro.io:3978/api/messages",
+    "qs": { "access_token": PAGE_ACCESS_TOKEN },
+    "id",
+    "method": "POST",
+    "json": request_body
+  }, (err, res, body) => {
+    if (!err) {
+      console.log('message sent!');
+      // Returns a '200 OK' response to all requests
+      return res.statusCode;
+    } else {
+      console.error("Unable to send message:" + err);
+    }
+  }); 
+
 });
 
