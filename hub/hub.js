@@ -161,7 +161,7 @@ app.post('/fsmsg', (req, res) => {
 
   // to : Skype Messenger
   let request_body = {
-    recipient: { id: '28:39b991d8-6b43-4086-8aca-329775f433f3' }
+    recipient: { id: '28:39b991d8-6b43-4086-8aca-329775f433f3' },
     type: 'postBack',
     value: body.message.text
   }
