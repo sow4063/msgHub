@@ -75,7 +75,7 @@ app.post('/api/messages', (req, res) => {
         await myBot.run(context);
 
         // request to hub server.
-        console.log('context input' + context );
+        console.log(context);
         
         // Construct the message body
         let request_body = {
