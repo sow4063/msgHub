@@ -161,9 +161,13 @@ app.post('/fsmsg', (req, res) => {
 
   // to : Skype Messenger
   let request_body = {
-    recipient: { id: '28:39b991d8-6b43-4086-8aca-329775f433f3' },
-    type: 'postBack',
-    value: body.message.text
+    recipient: { 
+      id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8',
+      name: 'Jongik Lee'
+    },
+    type: 'message',
+    channelId: 'skype',
+    text: body.message.text,
   }
 
   console.log('message sending From Facebook Messenger to Skypebot! : ' + message.text );
