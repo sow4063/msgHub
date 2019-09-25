@@ -167,13 +167,13 @@ app.post('/fsmsg', (req, res) => {
     },
     type: 'message',
     channelId: 'skype',
-    serviceUrl: 'https://smba.trafficmanager.net/apis/',
+    serviceUrl: 'https://www.fordicpro.io:3978/api/messages',
     from: { 
       id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8',
-      name: 'Jongik Lee' },
-      conversation: { 
-        id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8' 
-      },
+      name: 'Jongik Lee' 
+    },
+    conversation: { 
+      id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8' 
     },
     text: body.message.text,
   }
