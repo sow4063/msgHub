@@ -163,10 +163,18 @@ app.post('/fsmsg', (req, res) => {
   let request_body = {
     recipient: { 
       id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8',
-      name: 'Jongik Lee'
+      name: 'sow4063_skypebot'
     },
     type: 'message',
     channelId: 'skype',
+    serviceUrl: 'https://smba.trafficmanager.net/apis/',
+    from: { 
+      id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8',
+      name: 'Jongik Lee' },
+      conversation: { 
+        id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8' 
+      },
+    },
     text: body.message.text,
   }
 
