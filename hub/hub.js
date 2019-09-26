@@ -162,7 +162,7 @@ app.post('/fsmsg', (req, res) => {
   // to : Skype Messenger
   let request_body = {
     credentials:
-　　　　　MicrosoftAppCredentials {
+　　　　　MicrosoftAppCredentials: {
 　　　　　　　oAuthScope: 'https://api.botframework.com/.default',
 　　　　　　　refreshingToken: null,
 　　　　　　　appId: '39b991d8-6b43-4086-8aca-329775f433f3',
@@ -171,7 +171,7 @@ app.post('/fsmsg', (req, res) => {
 　　　　　　　tokenCacheKey: '39b991d8-6b43-4086-8aca-329775f433f3-cache' 
 　　　},
 　　　credentialsProvider:
-　　　　　SimpleCredentialProvider {
+　　　　　SimpleCredentialProvider: {
 　　　　　appId: '39b991d8-6b43-4086-8aca-329775f433f3',
 　　　　　appPassword: 'o-z4p/qSW@3A+P8RiZf0T]wS[Qr4.zMW' },
 　　　　　isEmulatingOAuthCards: false,
