@@ -166,8 +166,10 @@ app.post('/fsmsg', (req, res) => {
       name: 'sow4063_skypebot'
     },
     type: 'message',
+    timestamp: "2019-09-26T10:38:13.291Z",
+    id:'1569494293285',
     channelId: 'skype',
-    serviceUrl: 'https://www.fordicpro.io:3978/api/messages',
+    serviceUrl: 'https://smba.trafficmanager.net/apis/',
     from: { 
       id: '29:18HAr90YesQ7UVwCivYr1jW6BfBG_6rBnN6AS0jliOo8',
       name: 'Jongik Lee' 
